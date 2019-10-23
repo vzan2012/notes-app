@@ -1,11 +1,11 @@
-const fs = require("fs");
+// const add = require("./util.js");
+// const name = "Title Name";
+// console.log(add(5,-5));
 
-fs.writeFileSync("notes.txt", "File Created...");
-// fs.writeFile(
-//   "notes1.txt",
-//   "This is my example using the file write async",
-//   () => console.log("Async File Created")
-// );
+const validator = require('validator');
+const getNotes = require('./notes.js');
 
-// Challenge 1: Append the new contents to the existing file (notes.txt)
-fs.appendFileSync("notes.txt", " New Appended Contents");
+getNotes();
+
+console.log(validator.isEmail('vzan2012@gmail.com'));
+console.log(validator.isURL('https://vzan2012.github.io'));
