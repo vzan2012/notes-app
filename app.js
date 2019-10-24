@@ -2,19 +2,51 @@
 // const name = "Title Name";
 // console.log(add(5,-5));
 
-// Validator NPM Package 
-const validator = require('validator');
+// Validator NPM Package
+const validator = require("validator");
 
-// Chalk NPM Package 
-const chalk = require('chalk');
+// Chalk NPM Package
+const chalk = require("chalk");
 
-const getNotes = require('./notes.js');
+// yargs NPM package
+const yargs = require("yargs");
 
-getNotes();
+const getNotes = require("./notes.js");
 
-console.log(validator.isEmail('vzan2012@gmail.com'));
-console.log(validator.isURL('https://vzan2012.github.io'));
+const command = process.argv[2];
 
-const msg = 'Success';
+// Change the version number
+yargs.version("3.0.0");
 
-console.log(chalk.green.bold.inverse.underline(msg));
+// Create add command
+yargs.command({
+  command: "add",
+  describe: "To add a new note",
+  handler: () => console.log("New Note adding to the List...")
+});
+
+
+// Create remove command 
+yargs.command({
+  command: 'remove',
+  describe: 'Remove Note',
+  handler: () => console.log('A Note has been removed')
+});
+
+// Create read command 
+yargs.command({
+  command: 'read',
+  describe: 'Read Note',
+  handler: () => console.log('Reading a Note')
+})
+
+// Create list command 
+yargs.command({
+  command: 'list',
+  describe: 'List all notes',
+  handler: () => console.log('Listing all Notes')
+})
+
+// add, remove, read, list
+
+console.log(yargs.argv);
