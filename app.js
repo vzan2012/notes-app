@@ -11,9 +11,9 @@ const chalk = require("chalk");
 // yargs NPM package
 const yargs = require("yargs");
 
-const getNotes = require("./notes.js");
+const notes = require("./notes.js");
 
-const command = process.argv[2];
+// const command = process.argv[2];
 
 // Change the version number
 yargs.version("3.0.0");
@@ -35,8 +35,10 @@ yargs.command({
     }
   },
   handler: argv => {
-    console.log(`Title: ${argv.title}`);
-    console.log(`Description: ${argv.body}`);
+
+    notes.addNote(argv.title, argv.body);
+
+
   }
 });
 
