@@ -35,10 +35,7 @@ yargs.command({
     }
   },
   handler: argv => {
-
     notes.addNote(argv.title, argv.body);
-
-
   }
 });
 
@@ -46,7 +43,16 @@ yargs.command({
 yargs.command({
   command: "remove",
   describe: "Remove Note",
-  handler: () => console.log("A Note has been removed")
+  builder: {
+    title: {
+      describe: "Note Title",
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: (argv) => {
+    notes.removeNote(argv.title);
+  }
 });
 
 // Create read command
