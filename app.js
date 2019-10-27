@@ -1,7 +1,3 @@
-// const add = require("./util.js");
-// const name = "Title Name";
-// console.log(add(5,-5));
-
 // Validator NPM Package
 const validator = require("validator");
 
@@ -13,10 +9,10 @@ const yargs = require("yargs");
 
 const notes = require("./notes.js");
 
-// const command = process.argv[2];
-
 // Change the version number
 yargs.version("3.0.0");
+
+// Add, Remove, Read, List
 
 // Create add command
 yargs.command({
@@ -66,7 +62,7 @@ yargs.command({
       type: "string"
     }
   },
-  handler: (argv) => notes.readNote(argv.title)
+  handler: argv => notes.readNote(argv.title)
 });
 
 // Create list command
@@ -75,8 +71,6 @@ yargs.command({
   describe: "List all notes",
   handler: () => notes.listNotes()
 });
-
-// add, remove, read, list
 
 // Parse
 yargs.parse();
